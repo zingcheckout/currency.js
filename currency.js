@@ -119,6 +119,32 @@
 
     toJSON: function() {
       return this.value;
+    }, 
+
+    floatValue: function() {
+      return this.value / 100;
+    }, 
+
+    isZero: function() { 
+      return Math.abs(this.value) < _epsilon; 
+    },
+
+    equals: function(other) {
+        if(!(other instanceof currency)) {
+            other = currency(other);
+        }
+
+        return this.subtract(other).isZero();
+    },
+
+    isLessThanOrEqualTo: function(b) {
+        if(!(b instanceof currency)) b = currency(b);
+        return this.value <= b.value;
+    },
+
+    isGreaterThan: function(b) { 
+      if(b instanceof currency) b = b.value;
+      return this.value > b;
     }
 
   };
