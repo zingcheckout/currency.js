@@ -126,7 +126,7 @@
     }, 
 
     isZero: function() { 
-      return Math.abs(this.value) < _epsilon; 
+      return Math.abs(this.value) < 0.0000001;
     },
 
     equals: function(other) {
@@ -146,7 +146,6 @@
       if(b instanceof currency) b = b.value;
       return this.value > b;
     }
-
   };
 
   window.currency = currency;
